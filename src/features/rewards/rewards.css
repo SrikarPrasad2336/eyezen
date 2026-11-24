@@ -1,0 +1,146 @@
+/* ---------- Level and weekly ring rows ---------- */
+.ez-level {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+}
+
+@media (max-width: 480px) {
+  .ez-level {
+    flex-direction: column;
+    text-align: center;
+  }
+  .ez-level .ez-row {
+    justify-content: center;
+  }
+}
+
+/* ---------- Stat tiles ---------- */
+.ez-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+  gap: var(--space-3);
+}
+
+.ez-stat {
+  display: grid;
+  align-content: center;
+  gap: 2px;
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-soft);
+  text-align: center;
+}
+
+.ez-stat__num {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.ez-stat__text {
+  font-weight: 700;
+}
+
+/* ---------- Badge grid ---------- */
+.ez-badges {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ez-badge {
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-soft);
+  text-align: center;
+}
+
+.ez-badge__icon {
+  display: grid;
+  place-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background: var(--color-bg-soft);
+  color: var(--color-text-muted);
+  opacity: 0.8;
+}
+
+.ez-badge.is-earned .ez-badge__icon {
+  background: var(--gradient-primary);
+  color: var(--color-on-primary);
+  box-shadow: 0 0 28px var(--color-teal-soft);
+  opacity: 1;
+}
+
+.ez-badge__name {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.ez-badge__bar {
+  width: 100%;
+  height: 0.4rem;
+  overflow: hidden;
+  border-radius: var(--radius-pill);
+  background: var(--color-teal-soft);
+}
+
+.ez-badge__fill {
+  height: 100%;
+  border-radius: var(--radius-pill);
+  background: var(--color-sage);
+  transition: width 600ms var(--ease-calm);
+}
+
+.ez-badge__status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+/* ---------- Home badge strip ---------- */
+.ez-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ez-strip__item {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-1);
+  width: 5.5rem;
+  text-align: center;
+}
+
+.ez-strip__icon {
+  display: grid;
+  place-items: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 50%;
+  background: var(--gradient-primary);
+  color: var(--color-on-primary);
+  box-shadow: 0 0 24px var(--color-teal-soft);
+}
+
+.ez-btn-link {
+  text-decoration: none;
+}

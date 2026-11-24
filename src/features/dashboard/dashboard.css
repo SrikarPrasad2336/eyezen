@@ -1,0 +1,254 @@
+/* ---------- Score ---------- */
+.ez-score {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+}
+
+@media (max-width: 480px) {
+  .ez-score {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* ---------- Three small rings ---------- */
+.ez-rings {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: var(--space-4);
+}
+
+.ez-ringcol {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-2);
+  text-align: center;
+}
+
+/* ---------- Next recommended ---------- */
+.ez-next,
+.ez-tip {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+
+.ez-next__icon,
+.ez-tip__icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: var(--color-surface);
+  color: var(--color-primary);
+}
+
+.ez-tip__icon {
+  background: var(--color-coral-soft);
+  color: var(--color-coral);
+}
+
+/* ---------- Quick start ---------- */
+.ez-quickgrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-3);
+}
+
+@media (min-width: 640px) {
+  .ez-quickgrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.ez-quick {
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: var(--space-2);
+  min-height: 6.5rem;
+  padding: var(--space-4) var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-soft);
+  color: var(--color-text);
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  transition:
+    transform var(--motion-fast) var(--ease-calm),
+    box-shadow var(--motion-medium) var(--ease-calm);
+}
+
+.ez-quick:hover {
+  box-shadow: var(--shadow-lift);
+}
+
+.ez-quick:active {
+  transform: scale(0.96);
+}
+
+.ez-quick__icon {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  background: var(--color-teal-soft);
+  color: var(--color-primary);
+}
+
+/* ---------- Chart ---------- */
+@keyframes ez-grow {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+.ez-chart {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.ez-chart__track {
+  fill: var(--color-teal-soft);
+  opacity: 0.5;
+}
+
+.ez-chart__bar {
+  fill: var(--color-primary);
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: ez-grow 900ms var(--ease-calm) both;
+}
+
+.ez-chart__label {
+  fill: var(--color-text-muted);
+  font-size: 9px;
+  font-family: var(--font-body);
+}
+
+.ez-chart__goal {
+  stroke: var(--color-coral);
+  stroke-width: 1.5;
+  opacity: 0.8;
+}
+
+.ez-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-2) var(--space-4);
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+.ez-legend__goal {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.ez-legend__line {
+  display: inline-block;
+  width: 1.5rem;
+  border-top: 2px dashed var(--color-coral);
+}
+
+/* ---------- Habit tracker ---------- */
+.ez-habits {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ez-habit {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.ez-habits > .ez-habit:first-child {
+  border-top: 0;
+}
+
+.ez-habit__icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: var(--color-teal-soft);
+  color: var(--color-primary);
+}
+
+.ez-habit__text {
+  flex: 1;
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.ez-habit__name {
+  font-weight: 700;
+}
+
+.ez-habit__bar {
+  height: 0.5rem;
+  margin-top: var(--space-1);
+  overflow: hidden;
+  border-radius: var(--radius-pill);
+  background: var(--color-teal-soft);
+}
+
+.ez-habit__fill {
+  height: 100%;
+  border-radius: var(--radius-pill);
+  background: var(--color-primary);
+  transition: width 600ms var(--ease-calm);
+}
+
+.ez-habit__fill--over {
+  background: var(--color-coral);
+}
+
+.ez-habit__btns {
+  flex: none;
+  display: flex;
+  gap: var(--space-2);
+}
+
+.ez-habit__btn {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  background: var(--color-surface);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: transform var(--motion-fast) var(--ease-calm);
+}
+
+.ez-habit__btn:active {
+  transform: scale(0.92);
+}
+
+.ez-habit__btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}

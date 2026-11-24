@@ -1,0 +1,586 @@
+/* ---------- Games list ---------- */
+.ez-game-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  color: var(--color-text);
+  text-decoration: none;
+  transition:
+    transform var(--motion-fast) var(--ease-calm),
+    box-shadow var(--motion-medium) var(--ease-calm);
+}
+a.ez-game-card:hover {
+  box-shadow: var(--shadow-lift);
+}
+a.ez-game-card:active {
+  transform: scale(0.98);
+}
+.ez-game-card--soon {
+  opacity: 0.65;
+}
+.ez-game-card__icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 50%;
+  background: var(--color-teal-soft);
+  color: var(--color-primary);
+}
+.ez-game-card__text {
+  flex: 1;
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+.ez-game-card__name {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 600;
+}
+
+/* ---------- Game frame ---------- */
+.ez-game__stage {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  width: 100%;
+  max-width: 30rem;
+}
+.ez-game__overlay {
+  position: absolute;
+  inset: -0.5rem;
+  z-index: 5;
+  display: grid;
+  place-items: center;
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-glass);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.ez-game {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-4);
+  width: 100%;
+}
+.ez-hud {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-2) var(--space-5);
+  font-size: var(--text-md);
+}
+.ez-hud__big {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+}
+.ez-bignum {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: 600;
+  line-height: 1;
+}
+
+/* Rest-break notice */
+.ez-breaknote {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-3);
+  max-width: 26rem;
+  padding: var(--space-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-soft);
+  text-align: center;
+}
+.ez-breaknote__icon {
+  display: grid;
+  place-items: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 50%;
+  background: var(--color-teal-soft);
+  color: var(--color-primary);
+}
+
+/* ---------- Follow the Firefly ---------- */
+@keyframes ez-soft-pulse {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(0.92);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.06);
+  }
+}
+.ez-fly-area {
+  position: relative;
+  width: min(100%, 28rem);
+  aspect-ratio: 1;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--gradient-hero);
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: crosshair;
+}
+.ez-fly {
+  position: absolute;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+.ez-fly__zone {
+  position: absolute;
+  inset: 0;
+  border: 2px dashed var(--color-teal);
+  border-radius: 50%;
+  opacity: 0.35;
+  transition:
+    opacity 1s var(--ease-calm),
+    background-color 1s var(--ease-calm);
+}
+.ez-fly.is-near .ez-fly__zone {
+  background: var(--color-teal-soft);
+  opacity: 0.8;
+}
+.ez-fly__core {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 22%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #fff6d6 0%, var(--color-coral) 80%);
+  box-shadow: 0 0 22px 6px var(--color-coral-soft);
+  transform: translate(-50%, -50%);
+  animation: ez-soft-pulse 4s ease-in-out infinite;
+}
+
+/* ---------- Schulte Table ---------- */
+.ez-schulte {
+  display: grid;
+  gap: var(--space-2);
+  width: min(100%, 26rem);
+}
+.ez-cell {
+  aspect-ratio: 1;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-soft);
+  color: var(--color-text);
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    transform var(--motion-fast) var(--ease-calm),
+    background-color var(--motion-medium) var(--ease-calm),
+    opacity var(--motion-medium) var(--ease-calm);
+}
+.ez-cell:active {
+  transform: scale(0.94);
+}
+.ez-cell.is-done {
+  background: var(--color-sage-soft);
+  box-shadow: none;
+  opacity: 0.45;
+  cursor: default;
+}
+.ez-cell.is-wrong {
+  background: var(--color-coral-soft);
+}
+
+/* ---------- Zen Focus Garden ---------- */
+.ez-garden__message {
+  min-height: 3rem;
+  max-width: 24rem;
+  font-size: var(--text-lg);
+  text-align: center;
+}
+.ez-garden {
+  display: grid;
+  gap: var(--space-3);
+  width: min(100%, 22rem);
+}
+.ez-flower {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  color: var(--flower);
+  cursor: pointer;
+  transition:
+    transform 0.45s var(--ease-calm),
+    box-shadow 0.45s var(--ease-calm),
+    background-color 0.45s var(--ease-calm),
+    color 0.45s var(--ease-calm);
+}
+.ez-flower.is-lit {
+  background: var(--flower);
+  box-shadow: 0 0 34px var(--flower);
+  color: var(--color-bg);
+  transform: scale(1.06);
+}
+
+/* ============ Phase 7, Part 2 ============ */
+
+/* Card colors for Color Calm Match (each card also has its own shape) */
+:root {
+  --match-1: #2f8f9d;
+  --match-2: #e8765f;
+  --match-3: #7fa383;
+  --match-4: #2f6f8f;
+  --match-5: #c48a2c;
+  --match-6: #8c7fb8;
+  --match-7: #d9798f;
+  --match-8: #4f9fd0;
+}
+
+/* Warm tones only in Night Calm */
+:root[data-theme='night-calm'] {
+  --match-1: #c8a36e;
+  --match-2: #e8896a;
+  --match-3: #a9b184;
+  --match-4: #9a6b45;
+  --match-5: #d9a441;
+  --match-6: #b88a8a;
+  --match-7: #d9798f;
+  --match-8: #c98f5a;
+}
+
+/* ---------- Peripheral Stars ---------- */
+.ez-sky {
+  position: relative;
+  width: min(100%, 26rem);
+  aspect-ratio: 1;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--gradient-hero);
+  user-select: none;
+  -webkit-user-select: none;
+}
+.ez-sky__center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #fff6d6 0%, var(--color-coral) 80%);
+  box-shadow: 0 0 24px 6px var(--color-coral-soft);
+  transform: translate(-50%, -50%);
+  animation: ez-soft-pulse 4s ease-in-out infinite;
+}
+.ez-skystar {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--color-teal-soft);
+  box-shadow: 0 0 22px var(--color-teal-soft);
+  color: var(--color-primary);
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  transition: opacity 100ms linear;
+}
+
+/* ---------- Color Calm Match ---------- */
+.ez-tiles {
+  display: grid;
+  gap: var(--space-2);
+  width: min(100%, 26rem);
+}
+.ez-tile {
+  position: relative;
+  aspect-ratio: 1;
+  padding: 0;
+  border: 0;
+  background: none;
+  perspective: 600px;
+  cursor: pointer;
+}
+.ez-tile__inner {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  transition: transform 0.5s var(--ease-calm);
+}
+.ez-tile.is-open .ez-tile__inner {
+  transform: rotateY(180deg);
+}
+.ez-tile__face {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-md);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.ez-tile__back {
+  border: 2px solid var(--color-border);
+  background: var(--color-teal-soft);
+}
+.ez-tile__back::after {
+  content: '';
+  width: 28%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--color-teal);
+  opacity: 0.35;
+}
+.ez-tile__front {
+  background: var(--tile);
+  color: #ffffff;
+  transform: rotateY(180deg);
+}
+:root[data-theme='night-calm'] .ez-tile__front {
+  color: #1c1511;
+}
+.ez-tile.is-matched .ez-tile__front {
+  box-shadow: 0 0 20px var(--tile);
+}
+
+/* ---------- Blink Bubble Pop ---------- */
+.ez-bubblearea {
+  position: relative;
+  width: min(100%, 24rem);
+  height: min(58dvh, 30rem);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--gradient-hero);
+  user-select: none;
+  -webkit-user-select: none;
+}
+.ez-bubble {
+  position: absolute;
+  padding: 0;
+  border: 2px solid var(--color-teal);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 30% 28%,
+    rgba(255, 255, 255, 0.85) 0 10%,
+    var(--color-teal-soft) 45%,
+    transparent 78%
+  );
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  transition:
+    top 60ms linear,
+    left 60ms linear;
+}
+.ez-pop {
+  position: absolute;
+  width: 3rem;
+  height: 3rem;
+  border: 2px solid var(--color-primary);
+  border-radius: 50%;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  animation: ez-ripple 0.5s ease-out;
+}
+.ez-blinknote {
+  position: absolute;
+  left: 50%;
+  bottom: var(--space-4);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: var(--color-surface-glass);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  font-weight: 700;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+/* ============ Phase 7, Part 3 ============ */
+
+/* Text for screen readers only */
+.ez-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  white-space: nowrap;
+  clip: rect(0 0 0 0);
+}
+
+/* ---------- Hidden Object Hunt ---------- */
+.ez-tofind {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.ez-tofind__item {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  transition:
+    opacity var(--motion-medium) var(--ease-calm),
+    background-color var(--motion-medium) var(--ease-calm);
+}
+.ez-tofind__item.is-done {
+  background: var(--color-sage-soft);
+  opacity: 0.45;
+}
+
+.ez-scene {
+  position: relative;
+  width: min(100%, 26rem);
+  aspect-ratio: 1;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--gradient-hero);
+  cursor: crosshair;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.ez-scene__art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.ez-treasure {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--treasure);
+  opacity: var(--faint);
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  transition:
+    opacity 0.6s var(--ease-calm),
+    background-color 0.6s var(--ease-calm),
+    box-shadow 0.6s var(--ease-calm);
+}
+.ez-treasure.is-found {
+  background: var(--color-surface);
+  box-shadow: 0 0 22px var(--treasure);
+  opacity: 1;
+  cursor: default;
+}
+.ez-treasure.is-hint {
+  opacity: 1;
+  animation: ez-glow 2.4s ease-in-out infinite;
+}
+
+/* ---------- Maze Glow ---------- */
+@keyframes ez-glow-fade {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+.ez-maze {
+  width: min(100%, 26rem);
+  padding: var(--space-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--gradient-hero);
+}
+.ez-maze svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.ez-maze__wall {
+  stroke: var(--color-primary);
+  stroke-width: 1.3;
+  stroke-linecap: round;
+}
+.ez-maze__exit {
+  fill: var(--color-sage);
+  filter: drop-shadow(0 0 2px var(--color-sage));
+  animation: ez-glow-fade 3.5s ease-in-out infinite;
+}
+.ez-maze__player {
+  transition: transform 160ms var(--ease-calm);
+}
+.ez-maze__halo {
+  fill: var(--color-coral-soft);
+  opacity: 0.9;
+}
+.ez-maze__core {
+  fill: var(--color-coral);
+  filter: drop-shadow(0 0 1.5px var(--color-coral));
+}
+
+.ez-dpad {
+  display: grid;
+  grid-template-columns: repeat(3, 3.5rem);
+  grid-template-rows: repeat(2, 3.5rem);
+  grid-template-areas:
+    '. up .'
+    'left down right';
+  gap: var(--space-2);
+}
+.ez-dpad__btn {
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-soft);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: transform var(--motion-fast) var(--ease-calm);
+}
+.ez-dpad__btn:active {
+  transform: scale(0.92);
+}
+.ez-dpad__up {
+  grid-area: up;
+}
+.ez-dpad__left {
+  grid-area: left;
+}
+.ez-dpad__down {
+  grid-area: down;
+}
+.ez-dpad__right {
+  grid-area: right;
+}

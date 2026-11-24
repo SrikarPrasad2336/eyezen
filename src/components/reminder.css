@@ -1,0 +1,48 @@
+.ez-reminder {
+  position: fixed;
+  z-index: 30;
+  left: calc(var(--space-4) + env(safe-area-inset-left, 0px));
+  right: calc(var(--space-4) + env(safe-area-inset-right, 0px));
+  bottom: calc(var(--tabbar-height) + var(--space-3) + env(safe-area-inset-bottom, 0px));
+  display: grid;
+  gap: var(--space-4);
+  max-width: 28rem;
+  margin: 0 auto;
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-lift);
+  animation: ez-fade-up var(--motion-slow) var(--ease-calm) both;
+}
+
+.ez-reminder__head {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.ez-reminder__icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  background: var(--color-teal-soft);
+  color: var(--color-primary);
+}
+
+.ez-reminder__title {
+  font-size: var(--text-lg);
+}
+
+@media (min-width: 900px) {
+  .ez-reminder {
+    left: auto;
+    right: var(--space-6);
+    bottom: var(--space-6);
+    width: 26rem;
+    margin: 0;
+  }
+}

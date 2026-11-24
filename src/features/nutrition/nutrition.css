@@ -1,0 +1,292 @@
+/* ---------- Section tabs (scroll sideways on phones) ---------- */
+.ez-tabs {
+  display: flex;
+  gap: var(--space-2);
+  margin: 0 calc(var(--space-1) * -1);
+  padding: var(--space-1) var(--space-1) var(--space-2);
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+.ez-tabs .ez-chip {
+  flex: none;
+}
+
+@media (min-width: 900px) {
+  .ez-tabs {
+    flex-wrap: wrap;
+    overflow-x: visible;
+  }
+}
+
+/* ---------- Search ---------- */
+.ez-search {
+  position: relative;
+}
+.ez-search__icon {
+  position: absolute;
+  left: var(--space-4);
+  top: 50%;
+  color: var(--color-text-muted);
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+.ez-search__input {
+  width: 100%;
+  min-height: 3.25rem;
+  padding: 0 3.5rem 0 3rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  color: var(--color-text);
+  box-shadow: var(--shadow-soft);
+}
+.ez-search__clear {
+  position: absolute;
+  right: var(--space-1);
+  top: 50%;
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--color-text-muted);
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+/* ---------- Card grids ---------- */
+.ez-cardgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr));
+  gap: var(--space-4);
+}
+.ez-cardgrid--wide {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
+}
+
+/* ---------- Nutrient and food cards ---------- */
+.ez-nutcard__head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+.ez-nutcard__icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  background: var(--color-teal-soft);
+  color: var(--color-primary);
+}
+.ez-nutcard__name {
+  font-size: var(--text-lg);
+}
+.ez-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.ez-tag {
+  display: inline-block;
+  padding: 2px var(--space-3);
+  border-radius: var(--radius-pill);
+  background: var(--color-teal-soft);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  line-height: 1.6;
+}
+.ez-tag--diet {
+  background: var(--color-sage-soft);
+}
+.ez-caution {
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--color-coral-soft);
+  font-size: var(--text-sm);
+  line-height: 1.6;
+}
+
+/* ---------- Meal plans ---------- */
+.ez-meals {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.ez-meal {
+  display: grid;
+  gap: 2px;
+  padding: var(--space-3) 0;
+  border-top: 1px solid var(--color-border);
+}
+.ez-meals > .ez-meal:first-child {
+  border-top: 0;
+}
+.ez-meal__when {
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+/* ---------- Eye Plate ---------- */
+.ez-plate-head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+}
+@media (max-width: 480px) {
+  .ez-plate-head {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+.ez-plate {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.ez-plate__row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  min-height: 3.5rem;
+  padding: var(--space-3) 0;
+  border-top: 1px solid var(--color-border);
+  cursor: pointer;
+}
+.ez-plate > li:first-child .ez-plate__row {
+  border-top: 0;
+}
+.ez-plate__row input {
+  flex: none;
+  width: 1.75rem;
+  height: 1.75rem;
+  accent-color: var(--color-primary);
+}
+.ez-plate__text {
+  display: grid;
+}
+.ez-plate__name {
+  font-weight: 700;
+}
+.ez-plate__row.is-on .ez-plate__name {
+  color: var(--color-primary);
+}
+
+/* ---------- Hydration ---------- */
+.ez-glasses {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-2);
+  max-width: 22rem;
+}
+.ez-glass {
+  display: inline-flex;
+  color: var(--color-teal-soft);
+  transition: color var(--motion-medium) var(--ease-calm);
+}
+.ez-glass.is-full {
+  color: var(--color-primary);
+}
+.ez-roundbtn {
+  display: grid;
+  place-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  background: var(--color-surface);
+  color: var(--color-text);
+  box-shadow: var(--shadow-soft);
+  cursor: pointer;
+  transition: transform var(--motion-fast) var(--ease-calm);
+}
+.ez-roundbtn:active {
+  transform: scale(0.92);
+}
+.ez-roundbtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.ez-roundbtn--main {
+  width: 4.25rem;
+  height: 4.25rem;
+  border-color: transparent;
+  background: var(--gradient-primary);
+  color: var(--color-on-primary);
+}
+.ez-roundbtn--small {
+  flex: none;
+  width: 2.75rem;
+  height: 2.75rem;
+  box-shadow: none;
+}
+.ez-bullets {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+  padding-left: var(--space-5);
+}
+
+/* ---------- Grocery list ---------- */
+.ez-addrow {
+  display: flex;
+  gap: var(--space-3);
+}
+.ez-textinput {
+  flex: 1;
+  min-width: 0;
+  min-height: 3rem;
+  padding: 0 var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+.ez-grocery {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.ez-groc {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) 0;
+  border-top: 1px solid var(--color-border);
+}
+.ez-grocery > .ez-groc:first-child {
+  border-top: 0;
+}
+.ez-groc__label {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  min-height: 3rem;
+  min-width: 0;
+  cursor: pointer;
+}
+.ez-groc__label input {
+  flex: none;
+  width: 1.75rem;
+  height: 1.75rem;
+  accent-color: var(--color-primary);
+}
+.ez-groc__text {
+  overflow-wrap: anywhere;
+  font-weight: 600;
+}
+.ez-groc.is-done .ez-groc__text {
+  opacity: 0.55;
+  text-decoration: line-through;
+}

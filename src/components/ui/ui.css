@@ -1,0 +1,224 @@
+/* ---------- Button ---------- */
+.ez-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 3rem;
+  padding: 0 var(--space-5);
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+  font-size: var(--text-md);
+  cursor: pointer;
+  transition:
+    transform var(--motion-fast) var(--ease-calm),
+    box-shadow var(--motion-medium) var(--ease-calm),
+    background-color var(--motion-medium) var(--ease-calm);
+}
+.ez-btn:active {
+  transform: scale(0.96);
+}
+.ez-btn--lg {
+  min-height: 3.5rem;
+  padding: 0 var(--space-6);
+  font-size: var(--text-lg);
+}
+.ez-btn--full {
+  width: 100%;
+}
+.ez-btn--primary {
+  background: var(--gradient-primary);
+  color: var(--color-on-primary);
+  box-shadow: var(--shadow-soft);
+}
+.ez-btn--primary:hover {
+  box-shadow: var(--shadow-lift);
+}
+.ez-btn--soft {
+  background: var(--color-teal-soft);
+  color: var(--color-text);
+}
+.ez-btn--ghost {
+  background: transparent;
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+.ez-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.ez-btn__icon {
+  display: inline-flex;
+}
+
+/* ---------- Chip (toggle button) ---------- */
+.ez-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 2.75rem;
+  padding: 0 var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    transform var(--motion-fast) var(--ease-calm),
+    background-color var(--motion-medium) var(--ease-calm);
+}
+.ez-chip:active {
+  transform: scale(0.96);
+}
+.ez-chip[aria-pressed='true'] {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  border-color: transparent;
+}
+
+/* ---------- Pill (small label) ---------- */
+.ez-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-pill);
+  background: var(--color-coral-soft);
+  font-size: var(--text-sm);
+  font-weight: 700;
+}
+
+/* ---------- Card ---------- */
+.ez-card {
+  padding: var(--space-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-soft);
+  transition: background-color var(--motion-medium) var(--ease-calm);
+}
+.ez-card--glass {
+  background: var(--color-surface-glass);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+}
+.ez-card--tinted {
+  background: var(--color-teal-soft);
+  box-shadow: none;
+}
+.ez-card--flush {
+  padding: 0;
+}
+
+/* ---------- Hero ---------- */
+.ez-hero {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--gradient-hero);
+  padding: var(--space-6) var(--space-5) 5rem;
+}
+.ez-hero__content {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: var(--space-3);
+  justify-items: start;
+}
+.ez-hero__waves {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 4.5rem;
+}
+
+/* ---------- Progress ring ---------- */
+.ez-ring {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+}
+.ez-ring svg {
+  position: absolute;
+  inset: 0;
+}
+.ez-ring__track {
+  stroke: var(--color-teal-soft);
+}
+.ez-ring__bar {
+  transition: stroke-dashoffset 1.4s var(--ease-calm);
+}
+.ez-ring__center {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  line-height: 1.2;
+}
+.ez-num {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 600;
+}
+.ez-sub {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+/* ---------- Skeleton ---------- */
+.ez-skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-bg-soft) 0%,
+    var(--color-surface) 50%,
+    var(--color-bg-soft) 100%
+  );
+  background-size: 200% 100%;
+  animation: ez-shimmer 2.6s ease-in-out infinite;
+}
+
+/* ---------- Empty and error states ---------- */
+.ez-state {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-3);
+  padding: var(--space-5) var(--space-4);
+  text-align: center;
+}
+.ez-state__icon {
+  display: grid;
+  place-items: center;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background: var(--color-sage-soft);
+  color: var(--color-primary);
+}
+.ez-state--error .ez-state__icon {
+  background: var(--color-coral-soft);
+  color: var(--color-danger);
+}
+
+/* ---------- Breathing circle ---------- */
+.ez-breath-wrap {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-3);
+}
+.ez-breath {
+  display: grid;
+  place-items: center;
+}
+.ez-breath__orb {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, var(--color-teal-soft) 0%, var(--color-teal) 75%);
+  opacity: 0.9;
+  animation: ez-breathe 8s ease-in-out infinite;
+  box-shadow: 0 0 60px var(--color-teal-soft);
+}

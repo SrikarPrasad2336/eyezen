@@ -1,0 +1,159 @@
+/* ============================================================
+   EyeZen design tokens
+   Every color has a name. Each theme gives the names new values,
+   so switching theme updates the whole app.
+   Themes are chosen by the data-theme attribute on <html>.
+   ============================================================ */
+
+/* ---------- Things that are the same in every theme ---------- */
+:root {
+  --font-display: 'Fraunces Variable', 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-body: 'Nunito Variable', 'Nunito', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --text-xs: 0.8125rem;
+  --text-sm: 0.9375rem;
+  --text-md: 1.0625rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.625rem;
+  --text-2xl: 2.125rem;
+  --text-3xl: 2.75rem;
+  --leading-body: 1.75;
+  --leading-tight: 1.25;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+
+  --motion-fast: 160ms;
+  --motion-medium: 400ms;
+  --motion-slow: 700ms;
+  --ease-calm: cubic-bezier(0.4, 0, 0.2, 1);
+
+  --sidebar-width: 17rem;
+  --tabbar-height: 4.75rem;
+  --glass-blur: 14px;
+}
+
+/* ---------- LIGHT (default) ---------- */
+:root,
+:root[data-theme='light'] {
+  color-scheme: light;
+
+  --color-bg: #fbf6ec;
+  --color-bg-soft: #f3ecdd;
+  --color-surface: #ffffff;
+  --color-surface-glass: rgba(255, 255, 255, 0.62);
+  --color-text: #14384a;
+  --color-text-muted: #4a6572;
+  --color-border: rgba(20, 56, 74, 0.12);
+
+  --color-teal: #2f8f9d;
+  --color-teal-soft: #d6ecec;
+  --color-ocean: #14384a;
+  --color-sage: #8fae93;
+  --color-sage-soft: #e1ece0;
+  --color-cream: #fbf6ec;
+  --color-coral: #e8765f;
+  --color-coral-soft: #fbe3dc;
+
+  --color-primary: #247a87;
+  --color-primary-hover: #1d6672;
+  --color-on-primary: #ffffff;
+
+  --color-success: #2f7d57;
+  --color-warning: #9a6414;
+  --color-danger: #b3392e;
+
+  --gradient-hero: linear-gradient(135deg, #cfe8e8 0%, #fbf6ec 55%, #dfeadb 100%);
+  --gradient-primary: linear-gradient(135deg, #267d8b, #1f6b77);
+
+  --shadow-soft: 0 6px 24px rgba(20, 56, 74, 0.08);
+  --shadow-lift: 0 12px 36px rgba(20, 56, 74, 0.14);
+}
+
+/* ---------- DARK ---------- */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --color-bg: #0b1d28;
+  --color-bg-soft: #0f2633;
+  --color-surface: #14323f;
+  --color-surface-glass: rgba(20, 50, 63, 0.6);
+  --color-text: #e8f1f2;
+  --color-text-muted: #a3bbc2;
+  --color-border: rgba(232, 241, 242, 0.12);
+
+  --color-teal: #5cc2cf;
+  --color-teal-soft: #14424d;
+  --color-ocean: #1c5470;
+  --color-sage: #8fb496;
+  --color-sage-soft: #1c3a35;
+  --color-cream: #f1e9d8;
+  --color-coral: #f08a74;
+  --color-coral-soft: #4a2a25;
+
+  --color-primary: #5cc2cf;
+  --color-primary-hover: #7bd0db;
+  --color-on-primary: #0b1d28;
+
+  --color-success: #6cc392;
+  --color-warning: #e0b05c;
+  --color-danger: #f08a7e;
+
+  --gradient-hero: linear-gradient(135deg, #123a49 0%, #0b1d28 60%, #14332f 100%);
+  --gradient-primary: linear-gradient(135deg, #6fcfdb, #4ab3c1);
+
+  --shadow-soft: 0 6px 24px rgba(0, 0, 0, 0.35);
+  --shadow-lift: 0 12px 36px rgba(0, 0, 0, 0.5);
+}
+
+/* ---------- NIGHT CALM (warm, low blue light) ---------- */
+:root[data-theme='night-calm'] {
+  color-scheme: dark;
+
+  --color-bg: #1c1511;
+  --color-bg-soft: #251b16;
+  --color-surface: #2d221b;
+  --color-surface-glass: rgba(45, 34, 27, 0.65);
+  --color-text: #f4e6d2;
+  --color-text-muted: #c9b093;
+  --color-border: rgba(244, 230, 210, 0.14);
+
+  --color-teal: #c8a36e;
+  --color-teal-soft: #3a2c20;
+  --color-ocean: #4a3626;
+  --color-sage: #a9b184;
+  --color-sage-soft: #2f301f;
+  --color-cream: #f4e6d2;
+  --color-coral: #e8896a;
+  --color-coral-soft: #4a2b22;
+
+  --color-primary: #e2a468;
+  --color-primary-hover: #edb67f;
+  --color-on-primary: #1c1511;
+
+  --color-success: #a9c27f;
+  --color-warning: #e6b768;
+  --color-danger: #ee8f78;
+
+  --gradient-hero: linear-gradient(135deg, #3a2a1d 0%, #1c1511 60%, #2a2618 100%);
+  --gradient-primary: linear-gradient(135deg, #eab177, #d79555);
+
+  --shadow-soft: 0 6px 24px rgba(0, 0, 0, 0.35);
+  --shadow-lift: 0 12px 36px rgba(0, 0, 0, 0.5);
+}
+
+/* ---------- HIGH CONTRAST (works on top of any theme) ---------- */
+:root[data-contrast='high'] {
+  --color-text-muted: var(--color-text);
+  --color-border: var(--color-text);
+}

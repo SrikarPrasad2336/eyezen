@@ -1,0 +1,136 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  font-size: 100%;
+}
+
+/* Text size setting (changes every rem-based size in the app) */
+html[data-text-size='small'] {
+  font-size: 90%;
+}
+html[data-text-size='large'] {
+  font-size: 115%;
+}
+html[data-text-size='xlarge'] {
+  font-size: 130%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  line-height: var(--leading-body);
+  background: var(--color-bg);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+  transition:
+    background-color var(--motion-medium) var(--ease-calm),
+    color var(--motion-medium) var(--ease-calm);
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: var(--leading-tight);
+  letter-spacing: -0.01em;
+}
+h1 {
+  font-size: var(--text-2xl);
+}
+h2 {
+  font-size: var(--text-xl);
+}
+h3 {
+  font-size: var(--text-lg);
+}
+
+p {
+  margin: 0;
+}
+
+/* Big tap targets, no double-tap zoom delay, but pinch-zoom still allowed
+   (people with low vision need it). */
+button,
+a,
+input,
+select,
+textarea {
+  touch-action: manipulation;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* iOS zooms into inputs smaller than 16px, so keep them at least 16px */
+input,
+select,
+textarea {
+  font: inherit;
+  font-size: max(1rem, 16px);
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+svg {
+  max-width: 100%;
+}
+
+/* Small layout helpers */
+.ez-stack {
+  display: grid;
+  gap: var(--space-5);
+}
+.ez-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+}
+.ez-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  gap: var(--space-4);
+}
+.ez-muted {
+  color: var(--color-text-muted);
+}
+
+/* ---------- Reduce motion ----------
+   Applies if the phone/computer asks for it OR the app setting is on. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+:root[data-motion='reduced'] *,
+:root[data-motion='reduced'] *::before,
+:root[data-motion='reduced'] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}

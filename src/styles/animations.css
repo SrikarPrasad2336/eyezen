@@ -1,0 +1,100 @@
+/* Slow, gentle motion only. Nothing flashes or strobes. */
+
+@keyframes ez-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ez-breathe {
+  0%,
+  100% {
+    transform: scale(0.72);
+  }
+  50% {
+    transform: scale(1);
+  }
+}
+
+@keyframes ez-shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+@keyframes ez-float {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.35;
+  }
+  80% {
+    opacity: 0.25;
+  }
+  100% {
+    transform: translate(12px, -14rem);
+    opacity: 0;
+  }
+}
+
+@keyframes ez-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+  50% {
+    box-shadow: 0 0 40px 8px var(--color-teal-soft);
+  }
+}
+
+@keyframes ez-ripple {
+  from {
+    transform: scale(0.6);
+    opacity: 0.5;
+  }
+  to {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+/* Page enter */
+.ez-page {
+  animation: ez-fade-up var(--motion-slow) var(--ease-calm) both;
+}
+
+/* Floating particles (decoration) */
+.ez-particles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.ez-particles span {
+  position: absolute;
+  bottom: -10px;
+  border-radius: 50%;
+  background: var(--color-teal);
+  opacity: 0;
+  animation-name: ez-float;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+/* Soft waves (decoration) */
+.ez-waves {
+  display: block;
+  width: 100%;
+  height: 100%;
+}

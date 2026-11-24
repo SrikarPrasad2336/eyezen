@@ -1,0 +1,453 @@
+/* ---------- Exercise list ---------- */
+.ez-ex-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  color: var(--color-text);
+  text-decoration: none;
+  transition:
+    transform var(--motion-fast) var(--ease-calm),
+    box-shadow var(--motion-medium) var(--ease-calm);
+}
+.ez-ex-card:hover {
+  box-shadow: var(--shadow-lift);
+}
+.ez-ex-card:active {
+  transform: scale(0.98);
+}
+.ez-ex-card__icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 50%;
+  background: var(--color-teal-soft);
+  color: var(--color-primary);
+}
+.ez-ex-card__text {
+  flex: 1;
+  display: grid;
+  gap: 2px;
+}
+.ez-ex-card__name {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 600;
+}
+.ez-ex-card__time {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+/* ---------- Full-screen player ---------- */
+.ez-player {
+  --player-bg: var(--color-bg);
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  background: var(--gradient-hero);
+  color: var(--color-text);
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-left: env(safe-area-inset-left, 0px);
+  padding-right: env(safe-area-inset-right, 0px);
+}
+
+/* Palming: dark and dim. These re-define the color tokens inside the player only. */
+.ez-player--immersive {
+  --player-bg: #060b10;
+  --color-text: #cfe3e6;
+  --color-text-muted: #8fa9ae;
+  --color-primary: #46a5b1;
+  --color-primary-hover: #55b3bf;
+  --color-on-primary: #060b10;
+  --color-teal: #2a6f79;
+  --color-teal-soft: #12303a;
+  --color-surface: #0f2029;
+  --color-surface-glass: rgba(15, 32, 41, 0.6);
+  --color-bg-soft: #0c1a22;
+  --color-border: rgba(207, 227, 230, 0.16);
+  --color-coral-soft: #3a2420;
+  --gradient-primary: linear-gradient(135deg, #46a5b1, #388f9b);
+  --shadow-soft: none;
+  --shadow-lift: none;
+  background: var(--player-bg);
+}
+
+:root[data-theme='night-calm'] .ez-player--immersive {
+  --player-bg: #0f0a07;
+  --color-text: #e8d6bd;
+  --color-text-muted: #b39a7c;
+  --color-primary: #d49a5e;
+  --color-primary-hover: #dfa86f;
+  --color-on-primary: #0f0a07;
+  --color-teal: #7a5a38;
+  --color-teal-soft: #2a1d13;
+  --color-surface: #1c130d;
+  --color-surface-glass: rgba(28, 19, 13, 0.6);
+  --color-bg-soft: #150e0a;
+  --color-border: rgba(232, 214, 189, 0.16);
+  --color-coral-soft: #3a2219;
+  --gradient-primary: linear-gradient(135deg, #d49a5e, #bf8248);
+}
+
+.ez-player__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-4);
+}
+.ez-player__title {
+  flex: 1;
+  text-align: center;
+  font-weight: 700;
+}
+.ez-iconbtn,
+.ez-iconbtn-spacer {
+  flex: none;
+  width: 3rem;
+  height: 3rem;
+}
+.ez-iconbtn {
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  background: var(--color-surface-glass);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: transform var(--motion-fast) var(--ease-calm);
+}
+.ez-iconbtn:active {
+  transform: scale(0.92);
+}
+
+.ez-player__body {
+  flex: 1;
+  width: 100%;
+  max-width: 36rem;
+  margin: 0 auto;
+  padding: var(--space-3) var(--space-5);
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: var(--space-5);
+  text-align: center;
+}
+.ez-player__intro {
+  width: 100%;
+  justify-items: start;
+  text-align: left;
+}
+.ez-player__stage {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: 15rem;
+}
+.ez-player__meta {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-2);
+  width: 100%;
+}
+
+.ez-cue-word {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  color: var(--color-primary);
+}
+.ez-cue-text {
+  max-width: 28rem;
+  min-height: 3.5rem;
+  font-size: var(--text-lg);
+}
+.ez-clock {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-variant-numeric: tabular-nums;
+}
+
+.ez-bar {
+  width: 100%;
+  height: 0.5rem;
+  overflow: hidden;
+  border-radius: var(--radius-pill);
+  background: var(--color-teal-soft);
+}
+.ez-bar__fill {
+  height: 100%;
+  border-radius: var(--radius-pill);
+  background: var(--color-primary);
+  transition: width 200ms linear;
+}
+
+.ez-player__controls {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  padding: var(--space-5) var(--space-4) calc(var(--space-5) + env(safe-area-inset-bottom, 0px));
+  background: linear-gradient(to top, var(--player-bg) 60%, transparent);
+}
+
+/* ---------- Ready screen ---------- */
+.ez-howto {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+  padding-left: var(--space-5);
+}
+.ez-safety {
+  display: flex;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--color-coral-soft);
+  font-size: var(--text-sm);
+  line-height: 1.6;
+}
+.ez-safety > svg {
+  flex: none;
+  color: var(--color-danger);
+}
+
+/* ---------- Breathing guide ---------- */
+.ez-breathvis {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 16rem;
+  height: 16rem;
+  max-width: 80vw;
+  max-height: 80vw;
+}
+.ez-breathvis__ring {
+  position: absolute;
+  inset: 0;
+  border: 2px solid var(--color-teal);
+  border-radius: 50%;
+  opacity: 0.35;
+}
+.ez-breathvis__orb {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, var(--color-teal-soft) 0%, var(--color-teal) 78%);
+  box-shadow: 0 0 60px var(--color-teal-soft);
+  transition: transform 220ms linear;
+}
+
+/* ---------- Blink guide ---------- */
+.ez-blinkvis {
+  width: min(20rem, 90%);
+  height: auto;
+}
+
+/* ---------- Focus guide ---------- */
+.ez-focusvis {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 16rem;
+  height: 16rem;
+  max-width: 80vw;
+  max-height: 80vw;
+}
+.ez-focusvis__horizon {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 2px;
+  background: var(--color-border);
+}
+.ez-focusvis__dot {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, var(--color-teal-soft) 0%, var(--color-primary) 85%);
+  transition:
+    transform 1.2s var(--ease-calm),
+    opacity 1.2s var(--ease-calm);
+}
+
+/* ---------- Calm finish ---------- */
+.ez-done__orb {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 9rem;
+  height: 9rem;
+  border-radius: 50%;
+  background: var(--gradient-primary);
+  color: var(--color-on-primary);
+  animation: ez-glow 5s ease-in-out infinite;
+}
+.ez-done__orb::before,
+.ez-done__orb::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 2px solid var(--color-teal);
+  border-radius: 50%;
+  animation: ez-ripple 4s ease-out infinite;
+}
+.ez-done__orb::after {
+  animation-delay: 2s;
+}
+
+/* ============ Phase 4 additions ============ */
+
+/* Title + small line under it, at the top of the player */
+.ez-player__titlebox {
+  flex: 1;
+  display: grid;
+  justify-items: center;
+  min-width: 0;
+  line-height: 1.3;
+  text-align: center;
+}
+
+/* Slowly pulsing orb (eye massage, warm compress) */
+.ez-breathvis__orb--calm {
+  animation: ez-breathe 10s ease-in-out infinite;
+  transition: none;
+}
+
+/* Figure-8 and circles */
+.ez-tracevis {
+  width: min(22rem, 94%);
+  height: auto;
+  overflow: visible;
+}
+
+/* Up-down-left-right */
+.ez-trackvis {
+  position: relative;
+  width: 16rem;
+  height: 16rem;
+  max-width: 80vw;
+  max-height: 80vw;
+}
+.ez-trackvis__h,
+.ez-trackvis__v {
+  position: absolute;
+  background: var(--color-border);
+}
+.ez-trackvis__h {
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 2px;
+}
+.ez-trackvis__v {
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+}
+.ez-trackvis__dot {
+  position: absolute;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle at 35% 30%, var(--color-teal-soft) 0%, var(--color-primary) 85%);
+  box-shadow: 0 0 30px var(--color-teal-soft);
+  transition:
+    left 1.4s var(--ease-calm),
+    top 1.4s var(--ease-calm);
+}
+
+/* A card with a link on the left and a button on the right */
+.ez-ex-card--split {
+  justify-content: space-between;
+}
+.ez-ex-card__link {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  min-width: 0;
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Routine builder */
+.ez-field {
+  display: grid;
+  gap: var(--space-2);
+}
+.ez-label {
+  font-weight: 700;
+}
+.ez-input {
+  width: 100%;
+  min-height: 3rem;
+  padding: 0 var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+.ez-pick-list {
+  display: grid;
+}
+.ez-pick {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) 0;
+  border-top: 1px solid var(--color-border);
+}
+.ez-pick-list > .ez-pick:first-child {
+  border-top: 0;
+}
+.ez-pick__text {
+  flex: 1;
+  display: grid;
+  min-width: 0;
+}
+.ez-pick__num {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: var(--color-teal-soft);
+  color: var(--color-primary);
+  font-size: var(--text-sm);
+  font-weight: 700;
+}
+.ez-mini {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  background: var(--color-surface);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: transform var(--motion-fast) var(--ease-calm);
+}
+.ez-mini:active {
+  transform: scale(0.92);
+}
+.ez-mini:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}

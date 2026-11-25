@@ -3,7 +3,7 @@ import { BookOpen, ShieldCheck, Heart, Stethoscope, Lock } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import { Button, Card } from '../../components/ui'
 import { EyeLogo, NatureWaves, Particles } from '../../components/illustrations'
-import { useT } from '../../i18n'
+import { LANGUAGES, useT } from '../../i18n'
 import type { MessageKey } from '../../i18n/en'
 import { useSettings } from '../../store/settingsStore'
 import './onboarding.css'
@@ -18,6 +18,8 @@ const POINTS: { icon: LucideIcon; title: MessageKey; text: MessageKey }[] = [
 export default function ConsentScreen() {
   const t = useT()
   const acceptConsent = useSettings((state) => state.acceptConsent)
+    const language = useSettings((state) => state.language)
+  const update = useSettings((state) => state.update)
   const [agreed, setAgreed] = useState(false)
 
   return (
@@ -28,6 +30,25 @@ export default function ConsentScreen() {
       </div>
 
       <div className="ez-consent__inner ez-page">
+        <div
+          className="ez-row"
+          role="group"
+          aria-label={t('settings.language')}
+          style={{ justifyContent: 'center' }}
+        >
+          {LANGUAGES.map((item) => (
+            <button
+              key={item.id}
+              type="button"
+              className="ez-chip"
+              aria-pressed={language === item.id}
+              onClick={() => update({ language: item.id })}
+            >
+              {item.label}
+            </button>
+          ))}
+        </div>
+
         <div className="ez-consent__head">
           <EyeLogo size={64} />
           <h1>{t('consent.title')}</h1>

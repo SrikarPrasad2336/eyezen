@@ -134,3 +134,14 @@ svg {
   transition-duration: 0.01ms !important;
   scroll-behavior: auto !important;
 }
+
+
+/* Hindi and Telugu letters are taller, so give headings a bit more room */
+html[lang='hi'] h1,
+html[lang='hi'] h2,
+html[lang='hi'] h3,
+html[lang='te'] h1,
+html[lang='te'] h2,
+html[lang='te'] h3 {
+  line-height: 1.45;
+}

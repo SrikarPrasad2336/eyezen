@@ -7,9 +7,10 @@
 
 /* ---------- Things that are the same in every theme ---------- */
 :root {
-  --font-display: 'Fraunces Variable', 'Fraunces', Georgia, 'Times New Roman', serif;
-  --font-body: 'Nunito Variable', 'Nunito', system-ui, -apple-system, 'Segoe UI', sans-serif;
-
+    --font-display: 'Fraunces Variable', 'Fraunces', 'Noto Sans Devanagari Variable',
+    'Noto Sans Telugu Variable', Georgia, 'Times New Roman', serif;
+  --font-body: 'Nunito Variable', 'Nunito', 'Noto Sans Devanagari Variable',
+    'Noto Sans Telugu Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --text-xs: 0.8125rem;
   --text-sm: 0.9375rem;
   --text-md: 1.0625rem;

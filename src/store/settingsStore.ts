@@ -4,8 +4,7 @@ import { persist } from 'zustand/middleware'
 export type Theme = 'light' | 'dark' | 'night-calm'
 export type TextSize = 'small' | 'medium' | 'large' | 'xlarge'
 // Later we will write: 'en' | 'hi' | 'te'
-export type Language = 'en'
-
+export type Language = 'en' | 'hi' | 'te'
 export interface SettingsValues {
   theme: Theme
   textSize: TextSize
